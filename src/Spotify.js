@@ -1,6 +1,6 @@
 export const authEndpoint = "https://accounts.spotify.com/authorize";
 
-const redirectUri = "http://localhost:3000/";
+const redirectUri = "https://maggify.vercel.app";
 
 const clientId = "d77a612fe4bb426591fb2db65947cb74";
 
