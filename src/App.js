@@ -17,11 +17,19 @@ function App() {
     let _token = hash.access_token;
 
     if (_token) {
-      spotify.setAccessToken(_token)
+      spotify.setAccessToken(_token);
       dispatch({
         type: "SET_TOKEN",
         token: _token,
       });
+
+      spotify.getMyTopArtists().then((response) =>
+        dispatch({
+          type: "SET_TOP_ARTISTS",
+          top_artists: response,
+        })
+      );
+      
       spotify.getMe().then((user) => {
         dispatch({
           type: "SET_USER",
@@ -35,12 +43,12 @@ function App() {
         })
       );
       //https://open.spotify.com/playlist/
-      spotify.getPlaylist('37i9dQZEVXcCl5eaX3mN9V').then((response)=>
+      spotify.getPlaylist("37i9dQZEVXcCl5eaX3mN9V").then((response) =>
         dispatch({
           type: "SET_DISCOVER_WEEKLY",
           discover_weekly: response,
         })
-      )
+      );
       spotify.setAccessToken(_token);
     }
   }, []);

@@ -1,9 +1,9 @@
 import "./SongRow.css";
 
 
-function SongRow({ track }) {
+function SongRow({ track, playSong }) {
   return (
-    <div className="song_row">
+    <div className="song_row" onClick={()=> playSong(track.id)}>
       <img
         alt=""
         src={track.album.images[0].url}
